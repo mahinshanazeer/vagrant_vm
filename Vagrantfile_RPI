@@ -1,0 +1,21 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-22.04"
+
+  config.vm.provider "libvirt" do |libvirt|
+    libvirt.machine_type = "virt"  # Use 'virt' machine type for ARM architecture
+    libvirt.loader = "/usr/share/AAVMF/AAVMF_CODE.fd"  # Path to the UEFI firmware for ARM
+    libvirt.nvram = "/usr/share/AAVMF/AAVMF_VARS.fd"  # Path to the UEFI variables for ARM
+  end
+
+  config.vm.define "controlplane" do |node|
+    # controlplane specific configurations
+  end
+
+  config.vm.define "node1" do |node|
+    # node1 specific configurations
+  end
+
+  config.vm.define "node2" do |node|
+    # node2 specific configurations
+  end
+end
